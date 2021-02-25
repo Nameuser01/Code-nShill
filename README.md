@@ -30,6 +30,5 @@ I don't use this OS, but it should be the same thing as Linux distributions, or 
 }
 
 
-Configuration
-
-//Working on that part\\
+Configuration guide:
+You need to go on http://localhost/phpmyadmin in order to create the data base used in this project. When it's done, the website is fully operational
