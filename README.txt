@@ -38,3 +38,5 @@ Create a Table named "logs". Content (id, date, ip_addr, legal).
 Create a Table named "music_playlist". Content (id, lien_video, nom_video).
 Create a Table named "note". Content (id, date, commentaire).
 Create a Table named "ytb_videos". Content (id, url, nom, tag).
+
+Last step: In order to acces the web site, you need to go on the page "login.php" line 24. Change the values "user_pseudo" and "user_pwd" by the username and pwd that you want. Then the site is fully working, I think.
