@@ -49,12 +49,6 @@ if($_SESSION["name"]){
 	<section>
 		<div class="contleft">
 			<h4>Playlists Spotify:</h4>
-			<iframe src="https://open.spotify.com/embed/playlist/" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br />	
-			<iframe src="https://open.spotify.com/embed/playlist/" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br />
-			<iframe src="https://open.spotify.com/embed/playlist/" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br />
-			<iframe src="https://open.spotify.com/embed/playlist/" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br />
-			<iframe src="https://open.spotify.com/embed/playlist/" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br />
-			<iframe src="https://open.spotify.com/embed/playlist/" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe><br />
 			<iframe src="https://open.spotify.com/embed/playlist/g" width="320" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 		</div>
 		</div>
