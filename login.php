@@ -19,7 +19,6 @@
 	<header>
 		<h1>Code'nShill</h1>
 	</header>
-	<!-- Need to create a BDD for users, easy to do but not my priority -->
 	<?php
 	if (htmlspecialchars($_POST["pseudo"]) == "user_pseudo" && htmlspecialchars($_POST["password"]) == "user_pwd"){
 		session_start();
