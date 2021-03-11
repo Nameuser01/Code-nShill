@@ -5,7 +5,7 @@ session_start();
 <html lang='fr'>
 <head>
 	<title style="color: red">Admin - C'nS</title>
-	<link rel="stylesheet" href="http://127.0.0.1/main.css" />
+	<link rel="stylesheet" href="http://192.168.0.50/main.css" />
 	<meta charset="utf-8" />
 	<style>
 		nav{
@@ -18,6 +18,9 @@ session_start();
 			/*border: 1px solid #ccc;*/
 			padding: 10px;
 			width: 24%;
+		}
+		.contleft input{
+			margin-top: 10px;
 		}
 		.contcenter{
 			padding-top: 10px;
@@ -55,7 +58,8 @@ if($_SESSION["name"]){
 			<div><a href="home.php">Home</a></div>
 			<div><a href="note.php">note</a></div>
 			<div><a href="cpp.php">cpp</a></div>
-			<div><a href="music.php" target="_blank">music</a></div>
+			<div><a href="music.php">music</a></div>
+			<div><a href="http://192.168.0.50/ytb.php?tag=toute">Youtube</a></div>
 			<div><a href="contact.php">Contact</a></div>
 			<div><a href="orientation.php">Orientation</a></div>
 			<div><a href="administration.php">Refresh</a></div>
@@ -63,18 +67,24 @@ if($_SESSION["name"]){
 	</header>
 	<nav>
 		<div class="contleft">
-			<h4>:</h4>
+			<h4>Gestion:</h4>
+			<h5>Ajouter un Tag youtube:</h5>
+			<form method="post" action="http://192.168.0.50/add_tag.php">
+				<label for="tag">Tag:</label><br />
+				<input type="text" name="tag" id="tag"><br />
+				<input type="submit" value="Envoyer">
+			</form>
 		</div>
-		<div class="contcenter">
+		<!-- <div class="contcenter">
 			<h4>Main content:</h4>
 
-		</div>
+		</div> -->
 		<div class="contright">
 			<h4>Logs:</h4>
 			<?php
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=YourBDD;charset=utf8', '', '');
+				$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', 'root', '');
 			}
 			catch(Exeption $e)
 			{
