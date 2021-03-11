@@ -6,9 +6,9 @@ session_start();
 <head>
 	<title>Home - C'nS</title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="http://127.0.0.1/main.css" />
+	<link rel="stylesheet" href="http://192.168.0.50/main.css" />
 	<style>
-	@media (min-width: 1980px){/*Le CSS suivant concerne tous les écrans avec une longueur > 1920px*/
+	@media (min-width: 1980px){
 		nav{
 			display: flex;
 			flex-direction: row;
@@ -67,8 +67,8 @@ session_start();
 			padding-bottom: 3px;
 		}*/
 	}
-	@media (max-width: 100px){/*Le css ci-dessous concerne tous les écrans avec une taille < 1000px*/
-		/*pffffffff*/
+	@media (max-width: 100px){
+
 	}
 	</style>
 </head>
@@ -85,10 +85,11 @@ if($_SESSION["name"]){
 			</div>
 		</div>
 		<div class="menu">
-			<div><a href="http://127.0.0.1/home.php">Refresh</a></div>
-			<div><a href="http://127.0.0.1/note.php?page=1">note</a></div>
+			<div><a href="http://192.168.0.50/home.php">Refresh</a></div>
+			<div><a href="http://192.168.0.50/note.php?page=1">note</a></div>
 			<div><a href="cpp.php">cpp</a></div>
-			<div><a href="music.php" target="_blank">music</a></div>
+			<div><a href="music.php">music</a></div>
+			<div><a href="http://192.168.0.50/ytb.php?tag=toute">Youtube</a></div>
 			<div><a href="contact.php">Contact</a></div>
 			<div><a href="orientation.php">Orientation</a></div>
 			<div><a href="administration.php">Administration</a></div>
@@ -98,16 +99,22 @@ if($_SESSION["name"]){
 		<div class="contleft">
 			<div><h4>Useful links:</h4></div>
 			<div><h3>Twitch:</h3></div>
-			<a class="useful_links" href="https://www.twitch.tv/Streamer_1" target="_blank">streamer_1</a>
-			<a class="useful_links" href="https://www.twitch.tv/Streamer_2" target="_blank">Streamer_2</a>
-			<a class="useful_links" href="https://www.twitch.tv/Streamer_3" target="_blank">Streamer_3</a>
+			<a class="useful_links" href="https://www.twitch.tv/" target="_blank"></a>
+			<a class="useful_links" href="https://www.twitch.tv/" target="_blank"></a>
+			<a class="useful_links" href="https://www.twitch.tv/" target="_blank"></a>
+			<a class="useful_links" href="https://www.twitch.tv/" target="_blank"></a>
+			<br />
+			<div><h3 style="margin-top: 30px;">Twitch redif:</h3></div>
+			<a style="margin-bottom: 40px;" href="https://www.twitch.tv/vide" target="_blank">H</a><br />
+			<a style="margin: 20px;" href="https://www.twitch.tv/v" target="_blank"></a><br />
+			<a style="margin: 20px;" href="https://www.twitch.tv/" target="_blank"></a><br />
 		</div>
 		<div class="contcenter">
 			<h4>Main content:</h4>
 			<?php
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', '', '');
+				$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', 'root', '');
 			}
 			catch(Exeption $e)
 			{
@@ -130,7 +137,7 @@ if($_SESSION["name"]){
 				?>
 				<iframe width="1000" height="720" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($donnees['lien_video']) ; ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				<?php
-				break;//no need to go further
+				break;
 				}
 				else{
 					//Do nothing
@@ -145,7 +152,7 @@ if($_SESSION["name"]){
 			<?php
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=bdd;charset=utf8', '', '');
+				$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', 'root', '');
 			}
 			catch(Exeption $e)
 			{
@@ -155,7 +162,7 @@ if($_SESSION["name"]){
 			while ($donnees = $reponse->fetch())
 			{
 				?>
-				<p>At <strong><?php echo htmlspecialchars($donnees['date']) . $_SESSION['name'] ; ?></strong> says: <?php echo htmlspecialchars($donnees['commentaire']); ?></p>
+				<p>At <strong><?php echo htmlspecialchars($donnees['date']) . " Admin"; ?></strong> says: <?php echo htmlspecialchars($donnees['commentaire']); ?></p>
 				<?php
 			}
 			$reponse->closeCursor();
@@ -165,14 +172,14 @@ if($_SESSION["name"]){
 	<footer>
 		<div class="menu_left">
 			<div>
-				<p>Creator: Somebody</p>
-				<p>Creation: 01/28/2021</p>
+				<p>Creator: </p>
+				<p>Creation: 01/28/21</p>
 			</div>
 		</div>
 		<div class="menu_right">
 			<div>
-				<p>email: antoine.rimbault@hotmail.com</p>
-				<p>phone: +</p>
+				<p>email: </p>
+				<p>phone: +33 </p>
 			</div>
 		</div>
 	</footer>
@@ -181,10 +188,10 @@ if($_SESSION["name"]){
 else{
 	$ip_addr = $_SERVER['REMOTE_ADDR'];
 		$date_var = date("H:i:s d/m/Y");
-		$legal = 1; //0 means you can acces to the site; 1 means the opposite
+		$legal = 1; //0 means you can acces to the site; 1 means the opposite, ip will be send to blacklist
 		try
 		{
-			$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', '', '');
+			$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', 'root', '');
 		}
 		catch (Exeption $e)
 		{
@@ -195,7 +202,7 @@ else{
 		?>
 	<script>
 		window.alert("Vous n'êtes pas authentifié !");
-		document.location.href="http://127.0.0.1";
+		document.location.href="http://192.168.0.50";
 	</script>
 <?php
 }
