@@ -1,9 +1,8 @@
 <?php
 session_start();
 if($_SESSION['name']){
-	//refresh des id de la base de donnée
 	try{
-		$bdd = new PDO('mysql:host=localhost;dbname=;charset=utf8', '', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', 'root', '');
 	}
 	catch(Exeption $e){
 		die('Erreur : ' . $e->getMessage());
@@ -13,26 +12,29 @@ if($_SESSION['name']){
 	$nbr_coms = htmlspecialchars($data['nbr_coms']);
 	$req_com->closeCursor();
 	//requête de reagencement des IDs
-	$new_id = 1;
-	while($nbr_coms != $new_id){
-		$req = $bdd->prepare('UPDATE note_bis SET id = :new_id');
-		$req->execute(array('new_id' => $new_id));
-		$new_id++;
-	}
+	$req = $bdd->query('SELECT secondaryID FROM note_bis');
+	$donnees = $bdd->prepare('UPDATE note_bis SET secondaryID = ? WHERE secondaryID = ?');
+	
+	$row = $req->fetch();
+		for ($new_id = 1; $new_id < 7; $new_id++)
+		{
+			$donnees->execute(array($new_id, $row['secondaryID']));
+		}
 	$req->closeCursor();
 	?>
-	<script>
-		document.location.href="http://127.0.0.1/note.php?page=1";
-	</script>
+	<a href="http://192.168.0.50/note.php?page=1">Retour vers la page note (debeug)</a>
+	<!-- <script>
+		document.location.href="http://192.168.0.50/note.php?page=1";
+	</script> -->
 	<?php
 }
 else{
 	$ip_addr = $_SERVER['REMOTE_ADDR'];
 	$date_var = date("H:i:s d/m/Y");
-	$legal = 1; //0 means you can acces to the site; 1 means the opposite
+	$legal = 1; //0 means you can acces to the site; 1 means the opposite, ip will be send to blacklist
 	try
 	{
-		$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', '', '');
+		$bdd = new PDO('mysql:host=localhost;dbname=mywiki;charset=utf8', 'root', '');
 	}
 	catch (Exeption $e)
 	{
@@ -43,7 +45,7 @@ else{
 	?>
 <script>
 	window.alert("Vous n'avez pas le droit d'être sur cette page !");
-	document.location.href="http://1127.0.0.1";
+	document.location.href="http://192.168.0.50";
 </script>
 <?php
 }
